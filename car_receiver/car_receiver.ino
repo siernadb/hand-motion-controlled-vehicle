@@ -2,7 +2,7 @@
 #include <SPI.h> // Not actually used but needed to compile
 #include <AFMotor.h>
 
-#define MAX_SPEED 500
+#define MAX_SPEED 150
 
 // Motor shield variables
 int i=0;
@@ -39,9 +39,9 @@ void loop()
       Serial.println(command);
 
 
-//      speedSet(MAX_SPEED);
-//      drive(command);
-//      delay(2000);
+      speedSet(MAX_SPEED);
+      drive(command);
+      delay(2000);
     }
 
     

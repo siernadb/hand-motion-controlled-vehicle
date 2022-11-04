@@ -1,0 +1,10 @@
+README
+
+In order to fix timer conflicts with RadioHead, do the following steps: 
+1. Go to: File > Examples > RadioHead > ask > ask_receiver
+2. Once file has been opened, go to: Sketch > Show sketch folder.
+    This is will show the RadioHead library folder. 
+3. Navigate three folder levels up to the root of the RadioHead library folder.
+4. Open RH_ASK.cpp in a text editor.
+5. Add the following line of code at the top (underneath #include statements): 
+    #define RH_ASK_ARDUINO_USE_TIMER2

@@ -29,8 +29,7 @@ void loop() {
 
   drive('f');
   delay(2000);
-  drive('r');
-  delay(5000);
+  
  
 }
 
