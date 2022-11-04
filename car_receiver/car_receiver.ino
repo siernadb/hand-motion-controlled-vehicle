@@ -1,37 +1,51 @@
+#include <RH_ASK.h>
+#include <SPI.h> // Not actually used but needed to compile
 #include <AFMotor.h>
 
 #define MAX_SPEED 500
 
+// Motor shield variables
+int i=0;
+bool is_forward, is_backward, is_left, is_right;
+
+// RF variables
+uint8_t buf[4];
+uint8_t buflen = sizeof(buf);
+
+// Motor shield functions 
 AF_DCMotor leftBack(1);  // Back Left
 AF_DCMotor rightBack(2);  // Back Right
 AF_DCMotor rightFront(3);  // Front Right
 AF_DCMotor leftFront(4);  // Front Left
 
-int i=0;
+// RF function
+RH_ASK driver(500, 53, 46, 0); // ESP8266 or ESP32: do not use pin 11 or 2
 
-bool is_forward, is_backward, is_left, is_right;
+void setup()
+{
+    Serial.begin(9600);    // Debugging only
 
-
-void setup() {
-  // slowly bring the speed up to 
-  // avoid loading down the batteries too quickly
-  for (i = 0; i < MAX_SPEED; i += 2)
-    speedSet(i); 
-
-  is_forward  = false; 
-  is_backward = false;
-  is_left     = false; 
-  is_right    = false;
-  
+    if (!driver.init())
+         Serial.println("init failed");
 }
 
-void loop() {
+void loop()
+{
+    char command;
+    if (driver.recv(buf, &buflen)) // Non-blocking
+    {
+      Serial.print("Got:");
+      command = (char) buf[0];
+      Serial.println(command);
 
-  drive('f');
-  delay(2000);
-  drive('r');
-  delay(5000);
- 
+
+//      speedSet(MAX_SPEED);
+//      drive(command);
+//      delay(2000);
+    }
+
+    
+    
 }
 
 void drive(char dir)
@@ -66,10 +80,11 @@ void drive_forward()
 void drive_left_forward()
 {
   is_backward = true;
-  leftBack.run(BACKWARD);
+  leftBack.run(RELEASE);
+  leftFront.run(RELEASE);
   rightBack.run(FORWARD);
   rightFront.run(FORWARD);
-  leftFront.run(BACKWARD);
+  
 }
 
 void drive_right_forward()

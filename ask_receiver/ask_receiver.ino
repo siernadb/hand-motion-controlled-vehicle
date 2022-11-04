@@ -10,8 +10,10 @@
 #include <SPI.h> // Not actually used but needed to compile
 
 
-RH_ASK driver(2000, 22, 46, 0); // ESP8266 or ESP32: do not use pin 11 or 2
+RH_ASK driver(500, 53, 46, 0); // ESP8266 or ESP32: do not use pin 11 or 2
 
+uint8_t buf[4];
+uint8_t buflen = sizeof(buf);
 
 void setup()
 {
@@ -23,12 +25,8 @@ void setup()
 
 void loop()
 {
-    uint8_t buf[20];
-    uint8_t buflen = sizeof(buf);
-
     if (driver.recv(buf, &buflen)) // Non-blocking
     {
-	
 	    Serial.print("Got:");
       Serial.println((char*) buf);
     }
