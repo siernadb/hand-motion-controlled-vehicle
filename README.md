@@ -31,12 +31,16 @@ Dependencies for Arduino NANO (Glove microcontroller)
 
 _____________________________________________________________________________________________________________________________________________________________________
 
- ################ Connecting to ARDUINO mictrocontroller ################
+ ################ Connecting to ARDUINO microcontroller ################
  
  Things to keep in mind before flashing the code onto the Arduino boards:
  1. Make sure the transmitter code goes to Arduino NANO and the Arduino IDE compiles the code for NANO by selecting TOOLS>BOARDS>Arduino NANO
  2. Similarly for Receiver and the motor Sheild code make sure the code is flashed onto Arduino ATMEGA and the IDE compiles the code for ATMEGA by selecting               TOOLS>BOARDS>Arduino ATMEGA
  3. Select the correct port for USB communication with boards by going TOOLS>PORT>COMM ##
 
+_____________________________________________________________________________________________________________________________________________________________________
 
+ ################ Sketches requried for basic function ################
+ 1. glove_transmitter.ino for Arduino NANO
+ 2. car_receiver.ino for Arduino MEGA
 
