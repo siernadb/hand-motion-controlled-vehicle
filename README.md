@@ -52,7 +52,7 @@ ________________________________________________________________________________
 - As a scope of research, the designers of this project have worked on the Machine learning aspect of this robot. 
 - Using ML, the user is able to generate the gestures of their own choice.
 - This implementation is done using TinyML and Tensorflow Lite framework.
-- Al the ML code and required material can be found in Machine_learning_PS branch of this repo
+- All the ML code and required material can be found in Machine_learning_PS branch of this repo
 - The samples for Forwards and left gestures are recorded for your convinience
 
 Disclaimer -  The ML based implementation is implemented to explore future scope of this device, the intended functionality of this device was implemented using mathematical algorithms as seen in the code from main branch.  
